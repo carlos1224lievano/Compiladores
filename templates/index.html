@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate IVA and Total Price</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Analizador lexicco</h1>
+    <form method="POST">
+        <label for="input_text">introduzca el producto y su precio:</label><br>
+        <textarea id="input_text" name="input_text" rows="5" cols="50"></textarea><br>
+        <input type="submit" value="Analizar producto">
+    </form>
+    {% if products %}
+    <h2>Productos:</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>IVA</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in products %}
+        <tr>
+            <td>{{ item.product }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.iva }}</td>
+            <td>{{ item.total }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+</body>
+</html>
